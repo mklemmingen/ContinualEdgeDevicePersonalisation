@@ -1,0 +1,460 @@
+{
+  "platform": {
+    "machine": "aarch64",
+    "processor": "unknown",
+    "node": "raspi",
+    "system": "Linux",
+    "release": "6.12.75+rpt-rpi-2712",
+    "python": "3.11.2",
+    "torch": "2.12.0+cu130",
+    "num_threads": 4,
+    "load_avg_5min": 3.58544921875,
+    "pmic_self_test_summary": "14 rails, total 2.38 W, EXT5V 5.10 V"
+  },
+  "config": {
+    "sample_interval_s": 0.2,
+    "idle_duration_s": 30.0,
+    "sustained_duration_s": 30.0,
+    "timing_iterations": 200,
+    "timing_warmup": 20,
+    "batch_size": 32,
+    "seq_length": 250,
+    "num_classes": 5,
+    "seed": 42,
+    "threads": 4,
+    "settle_s": 2.0,
+    "wlv_window": 50,
+    "bwt_task_train_steps": 100,
+    "bwt_task_eval_batches": 8,
+    "task1_shift_mean": 1.0
+  },
+  "model": {
+    "n_total_params": 99725,
+    "n_encoder_params": 96768,
+    "n_middle_params": 2056,
+    "n_decoder_params": 901,
+    "middle_fraction_of_total": 0.020616695913762847
+  },
+  "phase_power_stats": {
+    "idle": {
+      "phase": "idle",
+      "step_label": "",
+      "n_samples": 110,
+      "power_W_mean": 2.7663663636363642,
+      "power_W_std": 0.6286194738945844,
+      "power_W_min": 1.9957,
+      "power_W_max": 4.9377,
+      "temperature_C_mean": 47.618181818181775,
+      "temperature_C_std": 0.7811625157629206,
+      "temperature_C_min": 46.1,
+      "temperature_C_max": 49.4
+    },
+    "timing/fp32": {
+      "phase": "timing",
+      "step_label": "fp32",
+      "n_samples": 24,
+      "power_W_mean": 5.741254166666665,
+      "power_W_std": 1.7060355066594126,
+      "power_W_min": 3.384,
+      "power_W_max": 9.0548,
+      "temperature_C_mean": 54.07500000000001,
+      "temperature_C_std": 1.2692681618423518,
+      "temperature_C_min": 51.0,
+      "temperature_C_max": 56.0
+    },
+    "inference/fp32": {
+      "phase": "inference",
+      "step_label": "fp32",
+      "n_samples": 116,
+      "power_W_mean": 5.852593965517241,
+      "power_W_std": 1.5810462850805578,
+      "power_W_min": 3.1614,
+      "power_W_max": 9.5067,
+      "temperature_C_mean": 57.145689655172404,
+      "temperature_C_std": 1.1918105786618218,
+      "temperature_C_min": 53.8,
+      "temperature_C_max": 59.3
+    },
+    "timing/train_last_layer": {
+      "phase": "timing",
+      "step_label": "train_last_layer",
+      "n_samples": 21,
+      "power_W_mean": 5.687138095238096,
+      "power_W_std": 1.4910517462440145,
+      "power_W_min": 3.5961,
+      "power_W_max": 9.5131,
+      "temperature_C_mean": 58.08095238095238,
+      "temperature_C_std": 0.6863423050032605,
+      "temperature_C_min": 56.5,
+      "temperature_C_max": 59.3
+    },
+    "training/train_last_layer": {
+      "phase": "training",
+      "step_label": "train_last_layer",
+      "n_samples": 111,
+      "power_W_mean": 5.8770675675675665,
+      "power_W_std": 1.526384472020603,
+      "power_W_min": 3.7728,
+      "power_W_max": 9.3904,
+      "temperature_C_mean": 59.1693693693694,
+      "temperature_C_std": 0.7002950205581344,
+      "temperature_C_min": 57.6,
+      "temperature_C_max": 60.4
+    },
+    "timing/train_mu_2pct": {
+      "phase": "timing",
+      "step_label": "train_mu_2pct",
+      "n_samples": 22,
+      "power_W_mean": 6.30995909090909,
+      "power_W_std": 1.8137649776736613,
+      "power_W_min": 4.0547,
+      "power_W_max": 9.3157,
+      "temperature_C_mean": 59.572727272727256,
+      "temperature_C_std": 0.5495302276257228,
+      "temperature_C_min": 58.7,
+      "temperature_C_max": 60.4
+    },
+    "training/train_mu_2pct": {
+      "phase": "training",
+      "step_label": "train_mu_2pct",
+      "n_samples": 111,
+      "power_W_mean": 6.2609018018018,
+      "power_W_std": 1.7942362366672138,
+      "power_W_min": 3.3352,
+      "power_W_max": 9.5677,
+      "temperature_C_mean": 59.29369369369372,
+      "temperature_C_std": 0.6488075380972083,
+      "temperature_C_min": 57.6,
+      "temperature_C_max": 60.9
+    },
+    "timing/train_mu_10pct": {
+      "phase": "timing",
+      "step_label": "train_mu_10pct",
+      "n_samples": 24,
+      "power_W_mean": 5.934245833333332,
+      "power_W_std": 1.3986832262820053,
+      "power_W_min": 4.0432,
+      "power_W_max": 9.273,
+      "temperature_C_mean": 59.316666666666656,
+      "temperature_C_std": 0.800347146902863,
+      "temperature_C_min": 57.6,
+      "temperature_C_max": 60.9
+    },
+    "training/train_mu_10pct": {
+      "phase": "training",
+      "step_label": "train_mu_10pct",
+      "n_samples": 111,
+      "power_W_mean": 6.32925855855856,
+      "power_W_std": 1.89057062811846,
+      "power_W_min": 3.4033,
+      "power_W_max": 9.4452,
+      "temperature_C_mean": 58.97117117117117,
+      "temperature_C_std": 0.7561623577254879,
+      "temperature_C_min": 56.5,
+      "temperature_C_max": 60.4
+    },
+    "timing/train_half": {
+      "phase": "timing",
+      "step_label": "train_half",
+      "n_samples": 69,
+      "power_W_mean": 6.320546376811593,
+      "power_W_std": 1.4523977852313201,
+      "power_W_min": 3.294,
+      "power_W_max": 9.2131,
+      "temperature_C_mean": 59.99565217391311,
+      "temperature_C_std": 0.7871126436537668,
+      "temperature_C_min": 57.6,
+      "temperature_C_max": 61.5
+    },
+    "training/train_half": {
+      "phase": "training",
+      "step_label": "train_half",
+      "n_samples": 111,
+      "power_W_mean": 6.34466306306306,
+      "power_W_std": 1.4968273401141297,
+      "power_W_min": 3.4778,
+      "power_W_max": 9.4909,
+      "temperature_C_mean": 59.528828828828814,
+      "temperature_C_std": 0.723777302291969,
+      "temperature_C_min": 57.6,
+      "temperature_C_max": 61.5
+    },
+    "timing/train_full": {
+      "phase": "timing",
+      "step_label": "train_full",
+      "n_samples": 108,
+      "power_W_mean": 6.458891666666669,
+      "power_W_std": 1.4554456495905426,
+      "power_W_min": 3.5135,
+      "power_W_max": 9.3441,
+      "temperature_C_mean": 59.795370370370364,
+      "temperature_C_std": 0.8505318879709433,
+      "temperature_C_min": 57.6,
+      "temperature_C_max": 62.0
+    },
+    "training/train_full": {
+      "phase": "training",
+      "step_label": "train_full",
+      "n_samples": 111,
+      "power_W_mean": 6.208762162162164,
+      "power_W_std": 1.367994429816781,
+      "power_W_min": 3.7593,
+      "power_W_max": 9.3664,
+      "temperature_C_mean": 59.66846846846846,
+      "temperature_C_std": 0.7881992227676493,
+      "temperature_C_min": 57.6,
+      "temperature_C_max": 61.5
+    },
+    "training/mu_opt_sgd": {
+      "phase": "training",
+      "step_label": "mu_opt_sgd",
+      "n_samples": 142,
+      "power_W_mean": 6.087576056338029,
+      "power_W_std": 1.71492295014081,
+      "power_W_min": 3.3585,
+      "power_W_max": 9.4485,
+      "temperature_C_mean": 59.15000000000002,
+      "temperature_C_std": 0.6715286324687502,
+      "temperature_C_min": 57.6,
+      "temperature_C_max": 60.9
+    },
+    "training/mu_opt_adam": {
+      "phase": "training",
+      "step_label": "mu_opt_adam",
+      "n_samples": 141,
+      "power_W_mean": 6.104675177304964,
+      "power_W_std": 1.6767805579731059,
+      "power_W_min": 3.4353,
+      "power_W_max": 9.6311,
+      "temperature_C_mean": 58.58794326241137,
+      "temperature_C_std": 0.8652860124292233,
+      "temperature_C_min": 56.0,
+      "temperature_C_max": 60.4
+    },
+    "drift_detection/wlv_cusum": {
+      "phase": "drift_detection",
+      "step_label": "wlv_cusum",
+      "n_samples": 111,
+      "power_W_mean": 6.060545945945945,
+      "power_W_std": 1.656847831600162,
+      "power_W_min": 3.2904,
+      "power_W_max": 9.5043,
+      "temperature_C_mean": 58.71261261261263,
+      "temperature_C_std": 0.7630093474823386,
+      "temperature_C_min": 57.1,
+      "temperature_C_max": 60.4
+    },
+    "bwt/full": {
+      "phase": "bwt",
+      "step_label": "full",
+      "n_samples": 96,
+      "power_W_mean": 6.261899999999998,
+      "power_W_std": 1.4573773516148796,
+      "power_W_min": 3.9895,
+      "power_W_max": 9.2746,
+      "temperature_C_mean": 59.254166666666684,
+      "temperature_C_std": 0.8153369276290343,
+      "temperature_C_min": 56.5,
+      "temperature_C_max": 60.9
+    },
+    "bwt/mu_2pct": {
+      "phase": "bwt",
+      "step_label": "mu_2pct",
+      "n_samples": 20,
+      "power_W_mean": 5.8527949999999995,
+      "power_W_std": 1.4566480544301015,
+      "power_W_min": 3.7107,
+      "power_W_max": 9.104,
+      "temperature_C_mean": 59.05500000000001,
+      "temperature_C_std": 0.6328309410893225,
+      "temperature_C_min": 57.1,
+      "temperature_C_max": 59.8
+    },
+    "teardown": {
+      "phase": "teardown",
+      "step_label": "",
+      "n_samples": 10,
+      "power_W_mean": 2.35646,
+      "power_W_std": 0.38458055125032,
+      "power_W_min": 2.0399,
+      "power_W_max": 3.2753,
+      "temperature_C_mean": 51.57000000000001,
+      "temperature_C_std": 0.8809653795694822,
+      "temperature_C_min": 49.9,
+      "temperature_C_max": 53.2
+    }
+  },
+  "phase_timestamps_unix": {
+    "idle": [
+      1778782638.012001,
+      1778782668.0121377
+    ],
+    "inference_fp32": [
+      1778782676.4483674,
+      1778782706.4697225
+    ],
+    "inference_int8": null,
+    "drift_detection_wlv": [
+      1778783006.8617046,
+      1778783036.8736145
+    ],
+    "bwt_full": [
+      1778783036.873757,
+      1778783064.0730414
+    ],
+    "bwt_mu_2pct": [
+      1778783064.0735707,
+      1778783071.4307253
+    ]
+  },
+  "inference_fp32": {
+    "per_call_ms": 37.76519963999817,
+    "sustained_power_W": 5.852593965517241,
+    "energy_mJ_per_call_gross": 221.02437951960718,
+    "energy_mJ_per_call_marginal": 116.5520015195041,
+    "n_sustained_inferences": 853
+  },
+  "inference_int8_dynamic": {
+    "supported": false,
+    "per_call_ms": null,
+    "sustained_power_W": null,
+    "energy_mJ_per_call_gross": null,
+    "energy_mJ_per_call_marginal": null,
+    "n_sustained_inferences": null,
+    "note": "torch.ao.quantization.quantize_dynamic with dtype=torch.qint8 quantises Linear layers only; Conv1d layers in this model remain FP32, so the win is bounded by the Linear-layer fraction."
+  },
+  "trainable_fraction_sweep": [
+    {
+      "config": "last_layer",
+      "trainable_params": 325,
+      "trainable_fraction": 0.0032589621459012284,
+      "per_update_ms": 34.313601505000406,
+      "n_sustained_updates": 837,
+      "t_start_unix": 1778782715.263173,
+      "t_end_unix": 1778782745.2778306,
+      "sustained_power_W": 5.8770675675675665,
+      "energy_mJ_per_update_gross": 201.66335453147553,
+      "energy_mJ_per_update_marginal": 106.7393615128203
+    },
+    {
+      "config": "mu_2pct",
+      "trainable_params": 2056,
+      "trainable_fraction": 0.020616695913762847,
+      "per_update_ms": 33.80908458000022,
+      "n_sustained_updates": 840,
+      "t_start_unix": 1778782753.1897001,
+      "t_end_unix": 1778782783.1954436,
+      "sustained_power_W": 6.2609018018018,
+      "energy_mJ_per_update_gross": 211.6753585641928,
+      "energy_mJ_per_update_marginal": 118.14704419674332
+    },
+    {
+      "config": "mu_10pct",
+      "trainable_params": 2957,
+      "trainable_fraction": 0.029651541739784407,
+      "per_update_ms": 36.82515647500168,
+      "n_sustained_updates": 823,
+      "t_start_unix": 1778782791.1584194,
+      "t_end_unix": 1778782821.221771,
+      "sustained_power_W": 6.32925855855856,
+      "energy_mJ_per_update_gross": 233.0759367896625,
+      "energy_mJ_per_update_marginal": 131.20406258157203
+    },
+    {
+      "config": "half",
+      "trainable_params": 85069,
+      "trainable_fraction": 0.8530358485836049,
+      "per_update_ms": 90.63996417999988,
+      "n_sustained_updates": 292,
+      "t_start_unix": 1778782841.3726652,
+      "t_end_unix": 1778782871.404133,
+      "sustained_power_W": 6.34466306306306,
+      "energy_mJ_per_update_gross": 575.0800327702042,
+      "energy_mJ_per_update_marginal": 324.3366846614476
+    },
+    {
+      "config": "full",
+      "trainable_params": 99725,
+      "trainable_fraction": 1.0,
+      "per_update_ms": 137.87652103500022,
+      "n_sustained_updates": 219,
+      "t_start_unix": 1778782901.3230867,
+      "t_end_unix": 1778782931.4367747,
+      "sustained_power_W": 6.208762162162164,
+      "energy_mJ_per_update_gross": 856.042526852665,
+      "energy_mJ_per_update_marginal": 474.6255567262388
+    }
+  ],
+  "optimizer_comparison_mu_2pct": [
+    {
+      "optimizer": "sgd",
+      "per_update_ms": 32.71593120500029,
+      "n_sustained_updates": 830,
+      "t_start_unix": 1778782939.113503,
+      "t_end_unix": 1778782969.1400795,
+      "sustained_power_W": 6.087576056338029,
+      "energy_mJ_per_update_gross": 199.16071946436193,
+      "energy_mJ_per_update_marginal": 108.65646782380782
+    },
+    {
+      "optimizer": "adam",
+      "per_update_ms": 34.729301170000326,
+      "n_sustained_updates": 766,
+      "t_start_unix": 1778782976.8347943,
+      "t_end_unix": 1778783006.8596456,
+      "sustained_power_W": 6.104675177304964,
+      "energy_mJ_per_update_gross": 212.0111027776492,
+      "energy_mJ_per_update_marginal": 115.9371321883633
+    }
+  ],
+  "drift_detector_wlv": {
+    "n_inferences_with_wlv": 819,
+    "n_detections": 0,
+    "per_decision_ms": 36.644578707814944,
+    "sustained_power_W": 6.060545945945945,
+    "energy_mJ_per_decision": 222.08615292854495,
+    "energy_mJ_per_decision_marginal": 120.71382298162038,
+    "wlv_window_size": 50,
+    "note": "Approximation of UDDA-TC's WLV signal: sum of per-class softmax-output variance across a sliding window, weighted by empirical class prior, fed into a CUSUM accumulator."
+  },
+  "bwt_proxy": {
+    "task1_shift_mean": 1.0,
+    "full_network": {
+      "freeze_config": "full",
+      "trainable_params": 99725,
+      "acc_task0_after_task0": 1.0,
+      "acc_task0_after_task1": 0.0,
+      "bwt_proxy": -1.0,
+      "t_start_unix": 1778783036.873757,
+      "t_end_unix": 1778783064.0730414
+    },
+    "mu_2pct": {
+      "freeze_config": "mu_2pct",
+      "trainable_params": 2056,
+      "acc_task0_after_task0": 0.0,
+      "acc_task0_after_task1": 0.0,
+      "bwt_proxy": 0.0,
+      "t_start_unix": 1778783064.0735707,
+      "t_end_unix": 1778783071.4307253
+    },
+    "note": "Synthetic two-task BWT proxy: train on N(0,1), evaluate, then train on N(shift,1), re-evaluate. BWT_proxy = R[1,0] - R[0,0]; negative = forgetting. Uses small batch counts so absolute accuracies are noisy; the relative full-vs-mu comparison is the demonstrable claim. Not a substitute for a real biosignal CL benchmark per the paper's open-targets section."
+  },
+  "headline_ratios_mu_2pct_vs_full": {
+    "full_over_mu_walltime": 4.078090925791027,
+    "full_over_mu_energy_marginal": 4.017244442746048
+  },
+  "power": {
+    "method": "pi5_pmic_vcgencmd",
+    "idle_W": 2.7663663636363642,
+    "csv_path": "/home/mklemmingen/ConferencePaperEdgeComputing/pilot/pilot_data.csv",
+    "rails_summed": "all PMIC-measured rails (excludes 5V main-rail current; peripherals on 5V are not counted)."
+  },
+  "poller": {
+    "samples_written": 1728,
+    "read_errors": 0,
+    "sample_rate_Hz": 5.0
+  },
+  "runtime": {
+    "total_wall_clock_s": 439.97104358673096
+  }
+}

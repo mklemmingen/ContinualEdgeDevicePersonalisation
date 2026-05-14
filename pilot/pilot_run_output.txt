@@ -1,0 +1,223 @@
+================================================================
+ Step 0: PMIC self-test
+----------------------------------------------------------------
+OK: 14 PMIC rails accessible.
+    EXT5V_V        = 5.096 V (plausible)
+    summed power   = 2.381 W
+    SoC temperature = 47.7 C
+    CPU clock       = 2400 MHz
+    throttled bits  = 0x0 (no throttling flags)
+    rails: 0V8_AON, 0V8_SW, 1V1_SYS, 1V8_SYS, 3V3_ADC, 3V3_DAC, 3V3_SYS, 3V7_WL_SW, BATT, DDR_VDD2, DDR_VDDQ, EXT5V, HDMI, VDD_CORE
+
+================================================================
+ Pilot configuration (no CLI args; constants in script)
+----------------------------------------------------------------
+  Platform:     aarch64 on raspi
+  Total params: 99,725
+    Encoder:    96,768  (97.03%)
+    Middle:      2,056  ( 2.06%)  <-- mu-training default
+    Decoder:       901  ( 0.90%)
+  Batch x seq:  32 x 250
+  Threads:      4
+  Sample rate:  5.0 Hz (every 200 ms)
+  Wide CSV:     /home/mklemmingen/ConferencePaperEdgeComputing/pilot/pilot_data.csv
+  Summary JSON: /home/mklemmingen/ConferencePaperEdgeComputing/pilot/pilot_results.json
+================================================================
+
+################################################################
+# PHASE: IDLE BASELINE
+# DURATION: 30 s
+# WALL CLOCK START: 20:17:18 (unix 1778782638.012)
+################################################################
+  IDLE remaining:   0.2 s
+################################################################
+# PHASE END:   IDLE
+# WALL CLOCK END: 20:17:48 (unix 1778782668.012)
+################################################################
+
+
+################################################################
+# PHASE: INFERENCE FP32 SUSTAINED
+# DURATION: 30 s
+# WALL CLOCK START: 20:17:56 (unix 1778782676.448)
+################################################################
+  INFERENCE FP32 SUSTAINED remaining:   0.1 s  inferences: 852
+################################################################
+# PHASE END:   INFERENCE FP32 SUSTAINED
+# WALL CLOCK END: 20:18:26 (unix 1778782706.470)
+# OPERATIONS COMPLETED: 853
+################################################################
+
+/home/mklemmingen/ConferencePaperEdgeComputing/pilot/pilot_measurement.py:885: DeprecationWarning: torch.ao.quantization is deprecated and will be removed in 2.10.
+For migrations of users:
+1. Eager mode quantization (torch.ao.quantization.quantize, torch.ao.quantization.quantize_dynamic), please migrate to use torchao eager mode quantize_ API instead
+2. FX graph mode quantization (torch.ao.quantization.quantize_fx.prepare_fx,torch.ao.quantization.quantize_fx.convert_fx, please migrate to use torchao pt2e quantization API instead (prepare_pt2e, convert_pt2e)
+3. pt2e quantization has been migrated to torchao (https://github.com/pytorch/ao/tree/main/torchao/quantization/pt2e)
+see https://github.com/pytorch/ao/issues/2259 for more details
+  inf_int8 = quantize_dynamic(
+
+[INT8 quantisation skipped: RuntimeError: unknown architecure]
+
+################################################################
+# PHASE: TRAIN-LAST_LAYER SUSTAINED
+# DURATION: 30 s
+# WALL CLOCK START: 20:18:35 (unix 1778782715.263)
+################################################################
+  TRAIN-LAST_LAYER SUSTAINED remaining:   0.2 s  updates: 834
+################################################################
+# PHASE END:   TRAIN-LAST_LAYER SUSTAINED
+# WALL CLOCK END: 20:19:05 (unix 1778782745.278)
+# OPERATIONS COMPLETED: 837
+################################################################
+
+
+################################################################
+# PHASE: TRAIN-MU_2PCT SUSTAINED
+# DURATION: 30 s
+# WALL CLOCK START: 20:19:13 (unix 1778782753.190)
+################################################################
+  TRAIN-MU_2PCT SUSTAINED remaining:   0.1 s  updates: 839
+################################################################
+# PHASE END:   TRAIN-MU_2PCT SUSTAINED
+# WALL CLOCK END: 20:19:43 (unix 1778782783.196)
+# OPERATIONS COMPLETED: 840
+################################################################
+
+
+################################################################
+# PHASE: TRAIN-MU_10PCT SUSTAINED
+# DURATION: 30 s
+# WALL CLOCK START: 20:19:51 (unix 1778782791.158)
+################################################################
+  TRAIN-MU_10PCT SUSTAINED remaining:   0.2 s  updates: 819
+################################################################
+# PHASE END:   TRAIN-MU_10PCT SUSTAINED
+# WALL CLOCK END: 20:20:21 (unix 1778782821.222)
+# OPERATIONS COMPLETED: 823
+################################################################
+
+
+################################################################
+# PHASE: TRAIN-HALF SUSTAINED
+# DURATION: 30 s
+# WALL CLOCK START: 20:20:41 (unix 1778782841.373)
+################################################################
+  TRAIN-HALF SUSTAINED remaining:   0.3 s  updates: 291
+################################################################
+# PHASE END:   TRAIN-HALF SUSTAINED
+# WALL CLOCK END: 20:21:11 (unix 1778782871.404)
+# OPERATIONS COMPLETED: 292
+################################################################
+
+
+################################################################
+# PHASE: TRAIN-FULL SUSTAINED
+# DURATION: 30 s
+# WALL CLOCK START: 20:21:41 (unix 1778782901.323)
+################################################################
+  TRAIN-FULL SUSTAINED remaining:   0.3 s  updates: 218
+################################################################
+# PHASE END:   TRAIN-FULL SUSTAINED
+# WALL CLOCK END: 20:22:11 (unix 1778782931.437)
+# OPERATIONS COMPLETED: 219
+################################################################
+
+
+################################################################
+# PHASE: MU-TRAINING (SGD) SUSTAINED
+# DURATION: 30 s
+# WALL CLOCK START: 20:22:19 (unix 1778782939.113)
+################################################################
+  MU-TRAINING (SGD) SUSTAINED remaining:   0.2 s  updates: 823
+################################################################
+# PHASE END:   MU-TRAINING (SGD) SUSTAINED
+# WALL CLOCK END: 20:22:49 (unix 1778782969.140)
+# OPERATIONS COMPLETED: 830
+################################################################
+
+
+################################################################
+# PHASE: MU-TRAINING (ADAM) SUSTAINED
+# DURATION: 30 s
+# WALL CLOCK START: 20:22:56 (unix 1778782976.835)
+################################################################
+  MU-TRAINING (ADAM) SUSTAINED remaining:   0.1 s  updates: 762
+################################################################
+# PHASE END:   MU-TRAINING (ADAM) SUSTAINED
+# WALL CLOCK END: 20:23:26 (unix 1778783006.860)
+# OPERATIONS COMPLETED: 766
+################################################################
+
+
+################################################################
+# PHASE: WLV+CUSUM DRIFT DETECTION SUSTAINED
+# DURATION: 30 s
+# WALL CLOCK START: 20:23:26 (unix 1778783006.862)
+################################################################
+  WLV+CUSUM DRIFT DETECTION SUSTAINED remaining:   0.3 s  inferences+WLV: 815  detections: 0
+################################################################
+# PHASE END:   WLV+CUSUM DRIFT DETECTION SUSTAINED
+# WALL CLOCK END: 20:23:56 (unix 1778783036.874)
+# OPERATIONS COMPLETED: 819
+# WLV detections: 0
+################################################################
+
+
+################################################################
+# PHASE: BWT PROXY (full-network)
+# WALL CLOCK START: 20:23:56 (unix 1778783036.874)
+################################################################
+################################################################
+# PHASE END:   BWT PROXY (full-network)
+# WALL CLOCK END: 20:24:24 (unix 1778783064.073)
+# R[0,0]=1.000  R[1,0]=0.000  BWT=-1.000  trainable_params=99725
+################################################################
+
+
+################################################################
+# PHASE: BWT PROXY (mu-training, ~2% trainable)
+# WALL CLOCK START: 20:24:24 (unix 1778783064.074)
+################################################################
+################################################################
+# PHASE END:   BWT PROXY (mu-training, ~2% trainable)
+# WALL CLOCK END: 20:24:31 (unix 1778783071.431)
+# R[0,0]=0.000  R[1,0]=0.000  BWT=+0.000  trainable_params=2056
+################################################################
+
+
+Telemetry poller stopped. 1728 samples written, 0 read errors.
+Total wall-clock runtime: 440.0 s (7.33 min).
+
+================================================================
+ SUMMARY
+----------------------------------------------------------------
+  Idle baseline:          2.766 W
+  Inference FP32 sustained: 5.853 W   (37.765 ms/call, 116.552 mJ/call marginal)
+
+ Trainable-fraction sweep:
+   config       #trainable   frac%    ms/upd       W   mJ/upd marg
+   last_layer          325    0.33    34.314   5.877       106.739
+   mu_2pct            2056    2.06    33.809   6.261       118.147
+   mu_10pct           2957    2.97    36.825   6.329       131.204
+   half              85069   85.30    90.640   6.345       324.337
+   full              99725  100.00   137.877   6.209       474.626
+
+ Optimizer comparison (mu-training, ~2% trainable):
+   sgd      32.716 ms/upd   6.088 W   108.656 mJ/upd marginal
+   adam     34.729 ms/upd   6.105 W   115.937 mJ/upd marginal
+
+ WLV+CUSUM drift detector (819 inferences, 0 detections):
+   per-decision: 36.645 ms   6.061 W   120.714 mJ marginal
+
+ BWT proxy (synthetic two-task forgetting):
+   full-network: R[0,0]=1.000  R[1,0]=0.000  BWT=-1.000
+   mu-training : R[0,0]=0.000  R[1,0]=0.000  BWT=+0.000
+
+ Headline ratios (mu_2pct vs full):
+   full_over_mu_walltime             4.08x
+   full_over_mu_energy_marginal      4.02x
+
+ Wide CSV (1 row per ~200 ms): /home/mklemmingen/ConferencePaperEdgeComputing/pilot/pilot_data.csv
+ Summary JSON (paper-ready):     /home/mklemmingen/ConferencePaperEdgeComputing/pilot/pilot_results.json
+ Total runtime: 440.0 s (7.33 min)
+================================================================
