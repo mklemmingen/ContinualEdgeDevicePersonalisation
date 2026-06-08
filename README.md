@@ -68,3 +68,13 @@ pdflatex Lauterbach_OnDevicePersonalisation.tex     # second pass for cross-refs
 
 Marty Lauterbach, Reutlingen University.
 ORCID: [0009-0007-3396-872X](https://orcid.org/0009-0007-3396-872X).
+
+```bibtex
+@misc{lauterbach2026continual,
+  title     = {Continual µ-Training on Edge Devices: A Survey of On-Device Personalisation},
+  author    = {Lauterbach},
+  year      = {2026},
+  doi       = {10.5281/zenodo.20599083},
+  url       = {https://doi.org/10.5281/zenodo.20599083}
+}
+```
