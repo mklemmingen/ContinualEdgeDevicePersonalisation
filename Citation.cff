@@ -1,0 +1,46 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+type: article
+
+title: "Continual µ-Training on Edge Devices: A Survey of On-Device Personalisation"
+
+authors:
+  - family-names: Lauterbach
+    given-names: Martin
+    orcid: "https://orcid.org/0009-0007-3396-872X"
+    affiliation: "Reutlingen University, Reutlingen, Germany"
+    email: martin.lauterbach@student.reutlingen-university.de
+
+abstract: >
+  Wearable health devices and IoT sensors collect physiological data that varies
+  between individuals and drifts over time. Pre-trained models optimised for
+  population-level distributions miss this variability, while sending raw data or
+  training gradients to the cloud raises documented privacy risks including Deep
+  Leakage from Gradients (DLG) attacks. This paper surveys continual on-device
+  µ-training, in which a small subset of a neural network's parameters is updated
+  directly on resource-constrained edge hardware. Recent work on µ-trainers,
+  metaplastic binary networks, and label-free drift detection is organised along
+  the four evaluation axes of Huang et al.: calculation complexity, privacy,
+  accuracy, and runtime/energy. The survey identifies that direct per-update energy
+  measurement on wearable hardware is missing from every surveyed µ-training source,
+  and proposes three concrete benchmark targets: per-update energy in µJ,
+  backward-transfer accuracy on a fixed shift sequence, and drift-detection latency
+  in samples. A first reproducible reference data point on Raspberry Pi-class
+  hardware is reported alongside, yielding a measured 4.0x marginal-energy advantage
+  of µ-training over full-network training on the same device.
+
+keywords:
+  - Wearables
+  - µ-Training
+  - On-Device Learning
+  - Edge AI
+  - Drift Detection
+  - TinyML
+  - Catastrophic Forgetting
+
+version: "1.0.0"
+date-released: "2026-05-22"
+
+repository-code: "https://github.com/mklemmingen/conferencepaperedgecomputing"
+
+license: CC-BY-4.0
