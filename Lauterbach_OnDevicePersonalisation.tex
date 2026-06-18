@@ -14,6 +14,7 @@
 
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\hyphenation{backpropagation}
 
 \begin{document}
 
@@ -21,7 +22,8 @@
 A Survey of On-Device Personalisation\thanks{LaTeX
 source and the Raspberry~Pi~5 pilot-measurement script
 referenced in Section~\ref{sec:challenges} are available at
-\url{https://github.com/mklemmingen/ContinualEdgeDevicePersonalisation}.}}
+\url{https://github.com/mklemmingen/ContinualEdgeDevicePersonalisation};
+archived at \href{https://doi.org/10.5281/zenodo.20599082}{DOI:~10.5281/zenodo.20599082}.}}
 
 \author{
 \IEEEauthorblockN{Marty Lauterbach}
@@ -54,8 +56,8 @@ proposes three concrete benchmark targets: per-update energy in
 $\mu$J, backward-transfer accuracy on a fixed shift sequence, and
 drift-detection latency in samples. A first reproducible reference
 data point on Raspberry~Pi-class hardware is reported alongside,
-yielding a measured $4.0{\times}$ marginal-energy advantage of
-$\mu$-training over full-network training on the same device.
+yielding a measured $4.0{\times}$ marginal energy advantage of
+$\mu$-training over full network training on the same device.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -107,9 +109,7 @@ axis and adding non-medical methods (UDDA-TC~\cite{b6}, metaplastic
 BNNs~\cite{b9}). Second, it proposes three benchmark targets for cross-study comparison
 of on-device $\mu$-training methods: (i) per-update energy in
 $\mu$J on a named ARM Cortex-class platform, (ii) catastrophic-forgetting
-resistance measured as backward-transfer accuracy (BWT, the
-average change in accuracy on previously seen tasks after a new
-on-device update; negative values indicate forgetting)
+resistance measured as backward-transfer accuracy (BWT)
 on a fixed sequence of distribution shifts, and (iii)
 drift-detection latency in samples between shift onset and the
 detector's first positive. Federated personalisation~\cite{b4} is
@@ -168,7 +168,7 @@ semantically aligned with the pre-training distribution, but its
 limitation is that frozen feature-extraction layers cannot acquire
 genuinely new representations. BioTrain~\cite{BioTrain}
 measures the gap directly: on EEG and EOG new-subject calibration,
-full-network fine-tuning outperforms last-layer updates by
+full network fine-tuning outperforms last-layer updates by
 approximately 7~percentage points of accuracy on a low-power
 microcontroller under a sub-50\,mW power budget.
 
@@ -322,7 +322,7 @@ source does not report a comparable metric are qualitative.
 \centering
 \renewcommand{\arraystretch}{1.05}
 \small
-\begin{tabular}{|>{\bfseries}p{2.4cm}|p{2.9cm}|p{2.5cm}|p{3.5cm}|p{3.5cm}|}
+\begin{tabular}{|>{\bfseries}p{2.3cm}|p{3.0cm}|p{2.4cm}|p{3.5cm}|p{4.0cm}|}
 \hline
 \textbf{Approach} &
 \textbf{Calculation Complexity} &
@@ -334,7 +334,7 @@ $\mu$-Training~\cite{b3,b13} &
 Very Low ($<$2\,\% of weights updated, architecture-dependent~\cite{b3}) &
 Very High (no update egress) &
 Improved over static foundational model on TNMG/CPSC ECG~\cite{b3} &
-On-chip updates on Raspberry~Pi~3~\cite{b3} and Radxa~Zero~\cite{b13}; this work measures 33.8\,ms/118\,mJ per update on Pi~5 (4.0$\times$ less than full-network) \\
+On-chip updates (RPi3~\cite{b3}; Radxa~Zero~\cite{b13}); pilot (Pi~5): 33.8\,ms, 118\,mJ/update, a $4.0{\times}$ marginal energy advantage over full network training (Section~\ref{sec:challenges}) \\
 \hline
 Metaplastic BNN~\cite{b9} &
 Ultra-Low (integer-only operations) &
@@ -370,19 +370,12 @@ only when triggered by genuine distributional shift~\cite{b6}.
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.78\columnwidth]{pilot/IMG_3825.jpg}
-\caption{Pilot-measurement testbed referenced by the data point in
-the energy-asymmetry discussion below. A Raspberry~Pi~5 hosts the
-$\mu$-training, inference, and drift-detection workloads. The
-ATORCH J7-c USB-C inline meter visible in the foreground (reading
-5.13\,V, 1.07\,A) is used as a sanity-check reference; the reported
-power figures themselves come from the Pi~5's on-chip Renesas
-DA9091 PMIC, queried via \texttt{vcgencmd pmic\_read\_adc}. The
-PMIC measures the secondary rails it generates (3V3, 1V8,
-VDD\_CORE, DDR, $\ldots$) but not the 5\,V main-rail current
-directly, so peripheral draw (HAT, fan, and cabling visible in
-frame) is excluded from totals; relative comparisons across phases
-remain valid because the unmeasured offset is approximately
-constant.}
+\caption{Pilot-measurement testbed on Raspberry~Pi~5. The ATORCH
+J7-c USB-C inline meter (foreground, 5.13\,V, 1.07\,A) provides a
+sanity-check reference; all reported power figures come from the
+Pi~5's on-chip Renesas DA9091 PMIC via
+\texttt{vcgencmd~pmic\_read\_adc} (see body text for the
+rail-exclusion caveat).}
 \label{fig:testbed}
 \end{figure}
 
@@ -396,10 +389,11 @@ proposed below in (ii), we ran a synthetic two-task forgetting
 probe on the same Pi~5 testbed, scored with the backward-transfer
 (BWT) metric of Lopez-Paz \& Ranzato~\cite{GEM} (input mean shift
 and label rotation between tasks for the synthetic construction):
-full-network training collapses to BWT$=-1.0$ (complete forgetting
-of task~0 after training on task~1), confirming that the failure
-mode targeted by $\mu$-training and metaplasticity is real and
-immediately reproducible on commodity hardware.
+full network training collapses to BWT$=-1.0$ (complete forgetting
+of task~0 after training on task~1), confirming the full network
+failure mode is real and reproducible on commodity hardware;
+quantifying $\mu$-training's resistance needs a real biosignal
+continual-learning benchmark.
 
 \textit{Energy asymmetry between inference and training.}
 Inference is efficient: 0.350\,$\mu$J at 0.140\,ms latency on
@@ -408,56 +402,59 @@ budget of a wearable-class battery for continuous monitoring.
 The corresponding per-update training energy is not directly
 reported in any of the surveyed $\mu$-training sources. The wider
 TinyML training literature provides reference points that bracket
-the achievable measurement envelope: per-iteration training energy
+the achievable measurement envelope: per iteration training energy
 on low-end~\cite{POET} and mid-range~\cite{PockEngine}
-microcontrollers, and full-network biosignal fine-tuning under
+microcontrollers, and full network biosignal fine-tuning under
 50\,mW on the GAP9 RISC-V MCU~\cite{BioTrain}.
 
-To anchor this gap with a first reproducible reference point on the
-same Pi-class hardware that the surveyed $\mu$-training works
-deploy on (Raspberry~Pi~3~\cite{b3}, Radxa~Zero~\cite{b13}), we
-ran the testbed of Fig.~\ref{fig:testbed} through a
-trainable-fraction sweep on a Raspberry~Pi~5 with on-chip PMIC
-power telemetry (via \texttt{vcgencmd pmic\_read\_adc}). With the
+The Pi~5 is an application processor (Cortex-A76, DRAM,
+${\sim}2.8$\,W idle), not a Cortex-M microcontroller (SRAM-only,
+$10\text{--}100$\,mW), but both surveyed $\mu$-training works deploy
+on Pi-class hardware~\cite{b3,b13}, so we ran the testbed of
+Fig.~\ref{fig:testbed} through a trainable-fraction sweep with
+on-chip PMIC telemetry (\texttt{vcgencmd pmic\_read\_adc}); this
+sums 14 rails but excludes the 5\,V main rail, so peripheral draw
+is absent from totals (relative comparisons hold as the offset is
+roughly constant). With the
 $\mu$-training freeze pattern (2.06\,\% of weights trainable on a
-99.7\,k-parameter ECG-shaped 1D-CNN), each update costs 33.8\,ms
-and 118\,mJ above the 2.77\,W Pi~5 idle baseline, versus 137.9\,ms
-and 475\,mJ for full-network training: a $4.08{\times}$ wall-time
-and $4.02{\times}$ marginal-energy advantage measured on the same
-device (Fig.~\ref{fig:sweep}). The Pi~5 measurement sits 3--4
-orders of magnitude above the $10^{2}\,\mu$J/update Cortex-M
-target proposed below; the next step is to repeat the sweep on
-Cortex-M4F/M7 hardware to close the gap.
+99.7\,k-parameter
+ECG-shaped 1D-CNN), each update costs 33.8\,ms and 118\,mJ above
+the 2.77\,W Pi~5 idle baseline, versus 137.9\,ms and 475\,mJ for
+full network training: a $4.08{\times}$ wall-time and
+$4.02{\times}$ marginal energy advantage, stable across the
+200-iteration sweep (Fig.~\ref{fig:sweep}). The Pi~5
+measurement sits 3--4 orders of magnitude above the
+$10^{2}\,\mu$J/update Cortex-M target proposed below; repeating the
+sweep on Cortex-M4F/M7 hardware should close this gap.
+POET~\cite{POET} and PockEngine~\cite{PockEngine} cut per iteration
+cost on such devices via sparse backpropagation. The key
+precondition is plausible: the $\mu$-freeze activation footprint
+fits the 256\,kB SRAM of a Cortex-M7 such as the
+STM32F746G~\cite{PockEngine}.
 
 \begin{figure}[!htbp]
 \centering
 \includegraphics[width=\columnwidth]{pilot/fig_trainable_sweep.pdf}
 \caption{Per-update wall-time (top) and marginal energy above the
-2.77\,W Pi~5 idle baseline (bottom) versus trainable-parameter
-fraction. The $\mu$-training operating point at 2.06\,\% trainable
-(blue) sits on the flat regime; the cost climbs sharply above
-${\sim}3\,\%$ trainable as additional convolutional layers enter
-the backward pass. Annotations give the measured $\mu$-training
-vs.\ full-network ratios. Raspberry~Pi~5, 4 threads, batch~32,
-seq.~length~250, FP32, SGD; PMIC-summed power excludes
-peripherals on the unmeasured 5\,V main rail (see
-Fig.~\ref{fig:testbed} caveat).}
+2.77\,W idle baseline (bottom) vs.\ trainable-parameter fraction.
+The $\mu$-training point at 2.06\,\% (blue) lies on the flat
+regime; cost climbs sharply above ${\sim}3\,\%$ as further
+convolutional layers enter the backward pass. Raspberry~Pi~5,
+4 threads, batch~32, seq.~length~250, FP32, SGD; peripheral draw
+excluded from PMIC totals (see body text).}
 \label{fig:sweep}
 \end{figure}
 
 \begin{figure*}[t]
 \centering
 \includegraphics[width=\textwidth]{pilot/fig_power_timeline.pdf}
-\caption{Power telemetry over the full 440\,s pilot run. Background
-colour bands indicate the active pipeline phase (legend below);
-the thin grey trace is raw 5\,Hz PMIC samples
-(\texttt{vcgencmd pmic\_read\_adc} summed across the 14 measured
-rails) and the thick black trace is a 2\,s rolling mean. Short
-blue horizontal segments are per-phase mean-power overlays; the
-dashed line is the 2.77\,W idle reference. The trainable-fraction
-sweep is visible as the five training plateaus near the centre,
-with the largest two (\textit{half-net} and \textit{full-net})
-distinguishable by their longer settle time per update.}
+\caption{PMIC power telemetry over the 440\,s pilot run. Colour
+bands: active pipeline phase; grey trace: raw 5\,Hz samples
+(14 rails summed via \texttt{vcgencmd pmic\_read\_adc}); black
+trace: 2\,s rolling mean; dashed line: 2.77\,W idle reference.
+The five training plateaus correspond to the trainable-fraction
+sweep; the two rightmost (\textit{half-net}, \textit{full-net})
+show visibly longer per-update settle times.}
 \label{fig:timeline}
 \end{figure*}
 
@@ -501,15 +498,19 @@ by accepting more false alarms.
 \section{Conclusion}
 \label{sec:conclusion}
 
-Inference at sub-millisecond latency and sub-microjoule
-per-inference cost has been demonstrated on dedicated low-power
-hardware~\cite{b10}; the corresponding per-update training figures
-for the surveyed $\mu$-training methods have not been reported.
-The Pi~5 reference point measured in Section~\ref{sec:challenges}
-gives a $4.0{\times}$ $\mu$-training-over-full-network advantage on
-commodity hardware; the three benchmark targets proposed there are
-tractable next measurement steps that would enable direct
-cross-study comparison on Cortex-M-class targets.
+The surveyed literature shows that $\mu$-training adapts on-device
+with $<2\,\%$ of parameters updated and no gradient egress, that
+metaplastic BNNs resist forgetting without replay or regularisation
+overhead, and that label-free drift detection is a viable
+autonomous trigger. None of these sources reports per-update energy
+on a named platform, and independent reproductions remain open. The
+Pi~5 pilot in Section~\ref{sec:challenges} measures a $4.0{\times}$
+marginal energy advantage of $\mu$-training over full network
+training, with a confirmed full network forgetting failure
+(BWT$=-1.0$) on the same device. The three proposed benchmark
+targets are tractable next measurement steps toward cross-study
+comparison on Cortex-M-class hardware, where sub-microjoule
+per-inference energy is already demonstrated~\cite{b10}.
 
 %---------------------------------------------------------------
 \begin{thebibliography}{00}
