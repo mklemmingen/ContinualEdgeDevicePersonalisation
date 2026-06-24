@@ -2,7 +2,7 @@
 
 *A survey of on-device µ-training, anchored with a single-script Raspberry Pi 5 pilot measurement.*
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20599083.svg)](https://doi.org/10.5281/zenodo.20599083)
+https://doi.org/10.5281/zenodo.20752831
 
 This repository accompanies the IEEE conference paper
 
